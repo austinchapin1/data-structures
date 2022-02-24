@@ -2,42 +2,39 @@ var Queue = function() {
   var someInstance = {};
 
   // Use an object with numeric keys to store values
-  var storage = {
-    // 0: "value"
-  };
+  var storage = {};
+  var keyList = Object.keys(storage);
+
 
   // Implement the methods below
   someInstance.enqueue = function(value) {
-    // value goes to the back of the queue (left)
 
-    // set to back/left/end?
-    storage[0] = value;
-    // if not the first item
-    // increment everything up by 1? the key value
-    // storage keys += 1
-
-
+    var placeInLine = String(keyList.length + 1);
+    storage.placeInLine = value;
   };
 
   someInstance.dequeue = function() {
-    // item comes out the front (right)
-
-    // check if there are any values
-    // if not return undefined
-    // get value from front
-    // delete value
-    // increment everything up
-    // return value from front
-
+    if (keyList.length) {
+      var itemToReturn = storage[1];
+      delete storage[1];
+      _.forEach(keyList, function (key) {
+        return key--;
+      });
+      return itemToReturn;
+    }
+    return undefined;
   };
 
   someInstance.size = function() {
-    // number of items in someInstance or storage - length? position back minus position front?
-
+    return keyList.length;
   };
 
   return someInstance;
 };
 
+var test = new Queue;
+test.enqueue('austin');
+// console.log(test.size())
 
-// new Queue =  {instance of a Queue with functions as properties} {storage}
+
+
