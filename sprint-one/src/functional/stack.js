@@ -2,7 +2,7 @@ var Stack = function() {
   var someInstance = {};
 
   // Use an object with numeric keys to store values
-  var storage = {};
+  someInstance.storage = {};
 
   var keyList = Object.keys(storage);
 
@@ -10,6 +10,7 @@ var Stack = function() {
   someInstance.push = function(value) {
     var next = String(keyList.length + 1);
     storage[next] = value;
+
   };
 
   someInstance.pop = function() {
