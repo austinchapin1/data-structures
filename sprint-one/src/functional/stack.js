@@ -1,31 +1,36 @@
 var Stack = function() {
+
   var someInstance = {};
+  var storage = {};
 
   // Use an object with numeric keys to store values
-  someInstance.storage = {};
-
-  var keyList = Object.keys(storage);
+  someInstance.storage = storage;
+  someInstance.counter = 0;
 
   // Implement the methods below
   someInstance.push = function(value) {
-    var next = String(keyList.length + 1);
-    storage[next] = value;
 
+    someInstance.storage[someInstance.counter] = value;
+
+    someInstance.counter++;
   };
 
   someInstance.pop = function() {
 
-    if (keyList.length) {
-      var last = String(keyList.length);
-      var returnItem = storage[last] = value;
-      delete storage[String(keyList.length)];
-      return returnItem;
+    someInstance.counter--;
+
+    if (someInstance.counter < 0) {
+      someInstance.counter = 0;
     }
-    return undefined;
+    var returnItem = someInstance.storage[someInstance.counter];
+    delete someInstance.storage[someInstance.counter];
+    return returnItem;
+
+    // return someInstance.storager[someInstance.counter];
   };
 
   someInstance.size = function() {
-    return keyList.length;
+    return someInstance.counter;
   };
 
   return someInstance;
