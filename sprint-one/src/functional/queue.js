@@ -32,6 +32,7 @@ var Queue = function() {
 
   someInstance.size = function() {
     return someInstance.counter;
+    // 10 - 5
   };
 
   return someInstance;
